@@ -41,7 +41,6 @@ class Kon : public Zwierze
 class Osiol : public Zwierze{
     public:
     virtual void daj_glos(){cout << "duuuuurny" << endl;}
-    int masa;
     virtual void wyswietl_masa(){cout << "masa" << endl;}
     Osiol(){
     masa=168;
@@ -49,6 +48,31 @@ class Osiol : public Zwierze{
 
 };
 
+
+class Rzeznia{
+
+    public:
+
+    void usmierc(Zwierze* z){
+        delete z;
+        cout << "Usmiercony w rzezni"<<endl;
+    }
+
+};
+class Fabryka_zwierzakow{
+
+    public:
+    Zwierze* wytworz_zwierze(){
+
+
+		if(rand()%100 > 50)
+			return new Osiol();
+		else
+			return new Kon();
+
+    }
+
+};
 
 
 class Zoo{
@@ -78,7 +102,6 @@ class Zoo{
             cout << masa() << endl;
             return true;
         }else{
-            cout << "martwy" << endl;
             return false;
         }
 
@@ -121,19 +144,47 @@ zoo -> dodaj();
 
 */
 
+    srand(time(NULL));
+
 
     Zoo* z = new Zoo();
-    z -> dodaj_zwierze(new Kon());
-    z -> dodaj_zwierze(new Kon());
-    z -> dodaj_zwierze(new Kon());
-    z -> dodaj_zwierze(new Kon());
-    z -> dodaj_zwierze(new Kon());
-    z -> dodaj_zwierze(new Kon());
-    z -> dodaj_zwierze(new Kon());
-    z -> dodaj_zwierze(new Kon());
-    z -> dodaj_zwierze(new Kon());
-      z -> dodaj_zwierze(new Kon());
-    z -> dodaj_zwierze(new Kon());
+    Rzeznia rz;
+    Fabryka_zwierzakow f;
+    Zwierze *zw;
+
+    zw = f.wytworz_zwierze();
+    if(z -> dodaj_zwierze(zw)==false){
+        rz.usmierc(zw);
+    }  zw = f.wytworz_zwierze();
+    if(z -> dodaj_zwierze(zw)==false){
+        rz.usmierc(zw);
+    }  zw = f.wytworz_zwierze();
+    if(z -> dodaj_zwierze(zw)==false){
+        rz.usmierc(zw);
+    }  zw = f.wytworz_zwierze();
+    if(z -> dodaj_zwierze(zw)==false){
+        rz.usmierc(zw);
+    }  zw = f.wytworz_zwierze();
+    if(z -> dodaj_zwierze(zw)==false){
+        rz.usmierc(zw);
+    }  zw = f.wytworz_zwierze();
+    if(z -> dodaj_zwierze(zw)==false){
+        rz.usmierc(zw);
+    }  zw = f.wytworz_zwierze();
+    if(z -> dodaj_zwierze(zw)==false){
+        rz.usmierc(zw);
+    }  zw = f.wytworz_zwierze();
+    if(z -> dodaj_zwierze(zw)==false){
+        rz.usmierc(zw);
+    }  zw = f.wytworz_zwierze();
+    if(z -> dodaj_zwierze(zw)==false){
+        rz.usmierc(zw);
+    }  zw = f.wytworz_zwierze();
+    if(z -> dodaj_zwierze(zw)==false){
+        rz.usmierc(zw);
+    }
+
+
 
 
    /* cout<<z->odczytaj(0)->masa<<endl;
