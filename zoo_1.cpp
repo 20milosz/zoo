@@ -5,19 +5,19 @@
 
 using namespace std;
 
-
-
 class Zwierze
 {
 public:
     virtual void daj_glos()=0;
+    virtual void powiedz_imie()=0;
     virtual void wyswietl_masa()=0;
-    
-    int masa;
 
+    int masa;
+    string imie;
     Zwierze()
     {
         masa=0;
+        imie="";
     }
 
     virtual ~Zwierze()
@@ -32,6 +32,10 @@ public:
     {
         cout << "ihaaa" << endl;
     }
+    virtual void powiedz_imie()
+    {
+        cout << "mam na imie: "<<imie << endl;
+    }
     virtual void wyswietl_masa()
     {
         cout << "masa " << masa << endl;
@@ -39,6 +43,11 @@ public:
     Kon()
     {
         masa=128;
+    }
+    Kon(string imie)
+    {
+        this->imie=imie;
+
     }
 };
 
@@ -49,13 +58,23 @@ public:
     {
         cout << "duuuuurny" << endl;
     }
+    virtual void powiedz_imie()
+    {
+        cout << "mam na imie: "<<imie << endl;
+    }
     virtual void wyswietl_masa()
     {
-        cout << "masa" << masa << endl;
+        cout << "masa" << endl;
     }
     Osiol()
     {
         masa=168;
+    }
+
+    Osiol(string imie)
+    {
+        this->imie=imie;
+
     }
 };
 
@@ -74,7 +93,7 @@ public:
 
     void usmierc()
     {
-        for(int i=v.size()-1;i>=0;i--){
+        for(int i=v.size()-1;i==0;i--){
             delete v.at(i);
             v.pop_back();
         }
@@ -85,14 +104,14 @@ public:
 class Fabryka_zwierzakow
 {
 public:
-    Zwierze* wytworz_zwierze()
+    Zwierze* wytworz_zwierze(string imie)
     {
 
 
         if(rand()%100 > 50)
-            return new Osiol();
+            return new Osiol(imie);
         else
-            return new Kon();
+            return new Kon(imie);
     }
 };
 
@@ -125,6 +144,7 @@ public:
         {
             v.push_back(z);
             z -> daj_glos();
+            z->powiedz_imie();
             cout << masa() << endl;
             return true;
         }
@@ -153,7 +173,7 @@ int main()
     Zwierze *zw;
 
     for(int i=0; i<10; i++){
-        zw = f.wytworz_zwierze();
+        zw = f.wytworz_zwierze("2");
         if(z -> dodaj_zwierze(zw)==false)
         {
             rz.dodaj(zw);
@@ -170,6 +190,8 @@ int main()
     zwierzaki.push_back(new Kon());
     zwierzaki.push_back(new Osiol());
     zwierzaki.at(0)->daj_glos();
+
+
 
     return 0;
 }
