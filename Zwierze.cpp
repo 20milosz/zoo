@@ -9,6 +9,7 @@ Zwierze::Zwierze()
 {
     masa=0;
     imie="";
+
 }
 
 Zwierze::~Zwierze()
@@ -25,6 +26,6 @@ void Zwierze::podaj_imie()
 
 void Zwierze::wyswietl_masa()
     {
-        cout << "masa " << masa << endl;
+        cout << "Moja masa to: " << masa << endl;
     }
 

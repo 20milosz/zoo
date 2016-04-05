@@ -12,7 +12,9 @@ public:
     int masa();
     bool dodaj_zwierze(Zwierze* z);
     Zwierze* odczytaj(int i);
-
+    int odczytaj_rozmiar();
+    bool usun_zwierze(Zwierze* z);
+    void wyslij_do_rzezni(Rzeznia* rz, Zwierze* z);
 };
 
 

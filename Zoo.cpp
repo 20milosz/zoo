@@ -2,41 +2,75 @@
 #include <iostream>
 using namespace std;
 
-    int Zoo:: ile()
+int Zoo:: ile()
+{
+    return v.size();
+}
+
+int Zoo:: masa()
+{
+    int m=0;
+    for(int i=0; i<ile(); i++)
     {
-        return v.size();
+        m=m+v.at(i)->masa;
     }
+    return m;
+}
 
-    int Zoo:: masa()
+bool Zoo::dodaj_zwierze(Zwierze* z)
+{
+
+    if(masa()+z->masa<1000)
     {
-        int m=0;
-        for(int i=0; i<ile(); i++)
-        {
-            m=m+v.at(i)->masa;
-        }
-        return m;
+        v.push_back(z);
+        z -> podaj_imie();
+        z -> daj_glos();
+        z -> wyswietl_masa();
+        cout << "Masa zoo to: "<<masa() << endl;
+        return true;
     }
-
-    bool Zoo::dodaj_zwierze(Zwierze* z)
+    else
     {
+        return false;
+    }
+}
 
-        if(masa()+z->masa<1000)
+bool Zoo::usun_zwierze(Zwierze* z)
+{
+    vector<Zwierze*>::iterator it;
+
+    for(it=v.begin(); it!=v.end(); ++it){
+
+        if(*it==z)
         {
-            v.push_back(z);
-            z -> daj_glos();
-            z -> wyswietl_masa();
-            z -> podaj_imie();
-            cout << masa() << endl;
+            v.erase(it);
             return true;
         }
-        else
-        {
-            return false;
-        }
     }
+    return false;
 
-    Zwierze* Zoo::odczytaj(int i)
-    {
-        return v.at(i);;
+
+}
+
+Zwierze* Zoo::odczytaj(int i)
+{
+    return v.at(i);
+}
+int Zoo:: odczytaj_rozmiar(){
+
+    return v.size();
+}
+
+
+void Zoo::wyslij_do_rzezni(Rzeznia* rz, Zwierze* z)
+{
+    if(z -> usun_zwierze(z->odczytaj(1))==false){
+        cout<< "Nie odnaleziono zwierzaka"<<endl;
     }
+    rz->dodaj(z);
+
+
+
+
+}
 
