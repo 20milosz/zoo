@@ -9,10 +9,6 @@ public:
 
     Kon(std::string imie);
     virtual void daj_glos();
-
-
-
-
 };
 
 class Osiol : public Zwierze

@@ -23,6 +23,7 @@ using namespace std;
 
 
 
+
      void Osiol::daj_glos()
     {
         cout << "duuuuurny" << endl;
